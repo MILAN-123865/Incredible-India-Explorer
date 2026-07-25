@@ -1,0 +1,315 @@
+/* Presidents Timeline Styles */
+
+#president-explorer-app {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 100px 20px 40px; /* Accounts for fixed navbar */
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 15px;
+    color: var(--saffron);
+}
+
+.page-header p {
+    font-size: 1.2rem;
+    color: var(--text-secondary, #555);
+}
+
+/* Controls */
+.controls-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background: var(--bg-card, #fff);
+    border: 1px solid var(--border-color, #ccc);
+    border-radius: 8px;
+    padding: 5px 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    width: 100%;
+    max-width: 400px;
+}
+
+.search-container input {
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 1rem;
+    background: transparent;
+    color: var(--text-primary, #333);
+    flex-grow: 1;
+}
+
+.search-icon {
+    color: var(--text-secondary, #888);
+}
+
+/* Timeline Container */
+#timeline-root {
+    transition: opacity 0.15s ease-in-out;
+}
+
+.timeline-container {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding-top: 50px; /* Space for horizontal track */
+}
+
+/* Horizontal Track (Desktop) */
+.timeline-track {
+    position: absolute;
+    top: 25px; /* Above the cards */
+    left: 20px;
+    right: 20px;
+    height: 4px;
+    background-color: var(--saffron);
+    border-radius: 2px;
+}
+
+.timeline-item {
+    position: relative;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards ease-in-out;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* Horizontal Dots (Desktop) */
+.timeline-dot {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 50%;
+    top: -33px; /* Align with track */
+    transform: translateX(-50%);
+    background-color: var(--bg-card, #fff);
+    border: 4px solid var(--saffron);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-year-label {
+    position: absolute;
+    top: -55px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    color: var(--saffron);
+    font-size: 1.1rem;
+}
+
+/* Card */
+.timeline-content {
+    background: var(--bg-card, #fff);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+}
+
+.president-card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(255, 153, 51, 0.1), rgba(19, 136, 8, 0.1));
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color, #eee);
+}
+
+.president-portrait {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 15px;
+    border: 3px solid var(--bg-card, #fff);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.president-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.president-title h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.5rem;
+    color: var(--text-primary, #333);
+}
+
+.president-term-label {
+    margin: 0 0 10px 0;
+    font-weight: 600;
+    color: var(--saffron);
+    font-size: 0.95rem;
+}
+
+.president-election, .president-term, .president-vp {
+    margin: 3px 0;
+    font-size: 0.85rem;
+    color: var(--text-secondary, #666);
+}
+
+.president-card-body {
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.president-section {
+    margin-bottom: 15px;
+}
+
+.president-section h4 {
+    margin: 0 0 10px 0;
+    font-size: 1.05rem;
+    color: var(--text-primary, #333);
+    border-bottom: 2px solid var(--border-color, #f0f0f0);
+    padding-bottom: 5px;
+}
+
+.president-section p {
+    margin: 0;
+    color: var(--text-secondary, #555);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.president-section ul {
+    margin: 0;
+    padding-left: 20px;
+    color: var(--text-secondary, #555);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.president-section ul li {
+    margin-bottom: 5px;
+}
+
+.president-facts p {
+    font-style: italic;
+}
+
+.no-results {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-secondary, #777);
+    padding: 40px;
+}
+
+/* Tablet Responsive */
+@media screen and (max-width: 1024px) {
+    .timeline-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 768px) {
+    .timeline-container {
+        display: block;
+        padding-top: 0;
+        margin-left: 10px;
+    }
+
+    /* Change Horizontal Track to Vertical Track */
+    .timeline-track {
+        top: 0;
+        bottom: 0;
+        left: 20px;
+        right: auto;
+        width: 4px;
+        height: auto;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 50px;
+        margin-bottom: 40px;
+    }
+
+    /* Move Dot to the left */
+    .timeline-dot {
+        left: 12px;
+        top: 20px;
+        transform: none;
+    }
+
+    .timeline-year-label {
+        left: -40px;
+        top: 20px;
+        transform: none;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+    }
+}
+
+/* Dark Theme Adjustments */
+body:not(.light-theme) .search-container {
+    background: var(--bg-card, #1e1e1e);
+    border-color: #333;
+}
+
+body:not(.light-theme) .search-container input {
+    color: #f0f0f0;
+}
+
+body:not(.light-theme) .search-container input::placeholder {
+    color: #888;
+}
+
+body:not(.light-theme) .timeline-content {
+    background: var(--bg-card, #1e1e1e);
+}
+
+body:not(.light-theme) .president-title h3,
+body:not(.light-theme) .president-section h4 {
+    color: #f0f0f0;
+}
+
+body:not(.light-theme) .president-election,
+body:not(.light-theme) .president-term,
+body:not(.light-theme) .president-vp,
+body:not(.light-theme) .president-section p,
+body:not(.light-theme) .president-section ul,
+body:not(.light-theme) .president-facts p {
+    color: #ccc;
+}
+
+body:not(.light-theme) .president-card-header {
+    border-bottom-color: #333;
+}
+
+body:not(.light-theme) .president-section h4 {
+    border-bottom-color: #333;
+}
+
+body:not(.light-theme) .timeline-dot {
+    background-color: #121212;
+}
